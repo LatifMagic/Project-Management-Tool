@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./css/bootstrap.css" />
+    <link rel="stylesheet" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/Activity.js"></script>
+    <script src="js/creativa-popup.js" type="text/javascript"></script>
+  </head>
+
+  <body>
+    <img src="svg/blob.svg" class="blob1" alt="blob-svg" />
+
+    <div class="wk-container container-fluid">
+      <div id="InputArea" class="rounded col-lg-7 col-md-9 col-sm-12">
+        <h3><span class="type"></span></h3>
+        <button type="button" class="btn btn-info btn-sm" onclick="popup19()">
+          <i class="fa fa-plus" aria-hidden="true"></i> Row
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          onclick="myDeleteFunction()"
+        >
+          <i class="fa fa-close" aria-hidden="true"></i> Row
+        </button>
+
+        <table class="table" id="myTable">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Activity</th>
+              <th scope="col">Activity Dependency</th>
+              <th scope="col">Duration</th>
+            </tr>
+          </thead>
+          <tbody id="tblBody">
+            <tr class="content">
+              <td contenteditable="true">A</td>
+              <td><input value="" /></td>
+              <td>
+                <input value="7" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">B</td>
+              <td><input value="C" /></td>
+              <td>
+                <input value="3" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">C</td>
+              <td><input value="A" /></td>
+              <td>
+                <input value="4" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">D</td>
+              <td><input value="B" /></td>
+              <td>
+                <input value="6" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">E</td>
+              <td><input value="B" /></td>
+              <td>
+                <input value="5" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">F</td>
+              <td><input value="C,D" /></td>
+              <td>
+                <input value="2" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+            <tr class="content">
+              <td contenteditable="true">G</td>
+              <td><input value="E" /></td>
+              <td>
+                <input value="4" />
+                <a class="deleteButton" href="#"
+                  ><i class="fa fa-trash-o" aria-hidden="true"></i
+                ></a>
+                <a class="editButton" onclick="popupEdit()" href="#">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i
+                ></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <button
+          type="button"
+          class="btn btn-success confirm"
+          onclick="eventConfirmChange()"
+        >
+          Confirm
+        </button>
+      </div>
+
+      <div id="OutputArea" class="hidden">
+        <hr />
+
+        <h3><span class="op"></span></h3>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="list-group" id="list-tab" role="tablist">
+              <a
+                class="list-group-item list-group-item-action active"
+                id="list-gantt-chart"
+                data-toggle="list"
+                href="#gantt-chart"
+                role="tab"
+                aria-controls="gantt-chart"
+                >Gantt Chart</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-pert-chart"
+                data-toggle="list"
+                href="#pert-chart"
+                role="tab"
+                aria-controls="pert"
+                >Pert</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-critical-path"
+                data-toggle="list"
+                href="#critical-path"
+                role="tab"
+                aria-controls="critical-path"
+                >Critical Path</a
+              >
+              <a
+                class="list-group-item list-group-item-action"
+                id="list-hide"
+                data-toggle="list"
+                href="#hide"
+                role="tab"
+                aria-controls="Hide"
+                onclick="removeClass()"
+                >Hide</a
+              >
+            </div>
+          </div>
+          <div class="col-md-10">
+            <div class="tab-content" id="nav-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="gantt-chart"
+                role="tabpanel"
+                aria-labelledby="list-gantt-chart"
+              >
+                <canvas id="OutputGanttChart"> </canvas>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pert-chart"
+                role="tabpanel"
+                aria-labelledby="list-pert-chart"
+              >
+                <div id="OutputTables"></div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="critical-path"
+                role="tabpanel"
+                aria-labelledby="list-critical-path"
+              >
+                <div id="OutputText">
+                  <h4>Connect:</h4>
+                  <span id="Connect"></span>
+                  <br />
+                  <h4>Critical Path:</h4>
+                  <span
+                    id="CriticalPath"
+                    class="alert alert-info"
+                    role="alert"
+                  ></span>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="hide"
+                role="tabpanel"
+                aria-labelledby="list-hide"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/jquery-3.4.1.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/typed.min.js"></script>
+    <script>
+      $(document).ready(function ($) {
+        $(document).on("click", ".deleteButton", function (e) {
+          var r = $(this).closest("tr").remove();
+        });
+        $(document).on("click", ".editRow", function (e) {
+          //popupEdit();
+          var $row = $(e).parents("tr");
+          var $cols = $row.find("td:eq(0)");
+          console.log($cols.length);
+        });
+        $(window).on("load", function () {
+          $(".loading-overlay .spinner").fadeOut(5000, function () {
+            $("body").css("overflow", "auto");
+
+            $(this)
+              .parent()
+              .fadeOut(1000, function () {
+                $(this).remove();
+              });
+          });
+        });
+      });
+      function myCreateFunction() {
+        var table = document.getElementById("myTable");
+        var inputTab = document.getElementById("inputValue");
+        var row = table.insertRow(-1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        row.setAttribute("class", "content");
+        cell1.innerHTML = " <td >" + inputTab.value + "</td>";
+        cell2.innerHTML = " <td><input value='' /></td>";
+        cell3.innerHTML =
+          " <td><input value='' /><a class='deleteButton'  href='#'><i class='fa fa-trash-o' aria-hidden='true' ></i></a><a class='editButton' onclick='popupEdit()' href='#' > <i class='fa fa-pencil-square-o' aria-hidden='true'></i></a></td>";
+      }
+
+      function myDeleteFunction() {
+        var tab = document.getElementById("myTable");
+        if (tab.children[1].children.length > 1) {
+          tab.deleteRow(-1);
+        }
+      }
+      function editRow() {
+        var tab = document.getElementById("myTable");
+        //tab.children[1].children[0].children[0].innerHTML = editVal.value;
+        var currRows = document.querySelectorAll("editButton");
+        currRows.forEach((currRow) => {
+          currRow.addEventListener("click", (ev) => {
+            console.log(this.children.length);
+          });
+        });
+      }
+      function removeClass() {
+        var addClass = document.getElementById("OutputArea");
+        addClass.classList.add("hidden");
+        addClass.classList.remove("act");
+      }
+
+      function popup19() {
+        CreativaPopup.create("", "Add Activity", "", {
+          image: "./svg/Add_files.svg",
+          content:
+            '<input value="" id="inputValue"/> <button type="button" class="btn btn-info okBut"onclick="myCreateFunction()">OK</button>',
+        });
+      }
+      function popupEdit() {
+        CreativaPopup.create("", "Edit Activity", "", {
+          image: "./svg/Updates.svg",
+          content:
+            '<label>Activity:</label><input value="" id="editValue" style="margin-bottom:10px"  autocomplete="off"/><br><label>Activity Dependency:</label><input value="" id="editValue" style="margin-bottom:10px" autocomplete="off"/><br><label>Duration:</label><input value="" id="editValue" style="margin-bottom:10px" autocomplete="off"/> <button type="button" class="btn btn-info okBut editRow">OK</button>',
+        });
+      }
+      var typed = new Typed(".type", {
+        strings: [
+          "Project Activities",
+          "Pert Chart",
+          "Gantt Chart",
+          "Critical Path",
+        ],
+        typeSpeed: 60,
+        backSpeed: 60,
+        smartBackspace: true,
+        loop: true,
+      });
+      var typed2 = new Typed(".op", {
+        strings: ["Output Area"],
+        typeSpeed: 100,
+        backSpeed: 100,
+        smartBackspace: true,
+        loop: true,
+      });
+    </script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
